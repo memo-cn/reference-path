@@ -1,0 +1,80 @@
+{
+    "name": "reference-path",
+    "private": false,
+    "version": "1.0.0",
+    "description": "Transform repeated references (including circular references) in JavaScript object structures into string-formatted reference paths, enabling objects to precisely retain and restore their original reference relationships after serialization and deserialization. 将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为字符串格式的引用路径，使得对象在经过序列化和反序列化后，能够精确地保留和恢复其原始的引用关系。",
+    "keywords": [
+        "json",
+        "object",
+        "circular",
+        "cyclic",
+        "reference",
+        "path",
+        "serialize"
+    ],
+    "homepage": "https://github.com/memo-cn/reference-path/tree/main#readme",
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "rimraf ./dist/* && rollup -c --configPlugin rollup-plugin-typescript2",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "@babel/core": "^7.26.10",
+        "@babel/preset-env": "^7.26.9",
+        "@rollup/plugin-babel": "^6.0.4",
+        "@rollup/plugin-commonjs": "^28.0.3",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-replace": "^6.0.2",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@types/node": "^22.13.11",
+        "prettier": "^3.5.3",
+        "rimraf": "^6.0.1",
+        "rollup": "^4.36.0",
+        "rollup-plugin-dts": "^6.2.1",
+        "rollup-plugin-typescript2": "^0.36.0",
+        "tslib": "^2.8.1",
+        "typescript": "^5.8.2",
+        "vite": "^6.2.2",
+        "vite-plugin-dts": "^4.5.3"
+    },
+    "files": [
+        "dist",
+        "CHANGELOG.md",
+        "LICENSE",
+        "package.json",
+        "README.md",
+        "README.zh-CN.md"
+    ],
+    "dependencies": {
+        "prefix-encoder": "^1.0.1"
+    },
+    "author": {
+        "name": "memo",
+        "email": "i@memo.cool"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:memo-cn/reference-path.git"
+    },
+    "bugs": {
+        "email": "i@memo.cool",
+        "url": "https://github.com/memo-cn/reference-path/issues"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org"
+    },
+    "license": "MIT"
+}
