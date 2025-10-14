@@ -1,42 +1,56 @@
 import { createPrefixEncoder } from 'prefix-encoder';
 
+function escape(str: string) {
+    let res = '';
+    for (let char of str) {
+        if (char === '_' || char === '.') {
+            res += '_';
+        }
+        res += char;
+    }
+    return res;
+}
+
 // Create an encoder for encoding and decoding reference paths
 // 创建一个用于编码和解码引用路径的编码器
 const referencePathEncoder = createPrefixEncoder<string[]>({
     prefix: '$ref',
     escapeCharacter: '_',
-    stringify: (paths) =>
-        // The first character can be any character
-        // 第 1 个字符可为任意字符
-        ':' +
-        paths
-            .map((p) => {
-                p = p.replace(/_/g, '__');
-                p = p.replace(/\./g, '_.');
-                return p;
-            })
-            .join('.'),
+    stringify: (paths) => {
+        let str = '';
+        let first = true;
+        for (let path of paths) {
+            // The first character can be any character
+            // 第 1 个字符可为任意字符
+            str += first ? ':' : '.';
+            first = false;
+            str += escape(path);
+        }
+        return str;
+    },
     parse: (string) => {
         const paths: string[] = [];
-        let path = '';
-        let hasPath = false;
-        string = string.slice(1);
-        for (let i = 0; i < string.length; i++) {
-            let char = string[i];
-            if (char === '.') {
-                paths.push(path);
-                path = '';
-                hasPath = false;
-                continue;
-            } else if (char === '_') {
-                ++i;
-                char = string[i] || '_';
+        if (string.length > 0) {
+            let path = '';
+            let pushPath = false;
+            string = string.slice(1);
+            for (let i = 0; i < string.length; i++) {
+                let char = string[i];
+                if (char === '.') {
+                    paths.push(path);
+                    path = '';
+                    pushPath = false;
+                    continue;
+                } else if (char === '_') {
+                    ++i;
+                    char = string[i] || '_';
+                }
+                path += char;
+                pushPath = true;
             }
-            path += char;
-            hasPath = true;
-        }
-        if (hasPath) {
-            paths.push(path);
+            if (pushPath) {
+                paths.push(path);
+            }
         }
         return paths;
     },

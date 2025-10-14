@@ -26,5 +26,6 @@ async function referenceDemo() {
 
     var restoredObject = restoreReference(serializableObject);
     // true
+    console.log(restoredObject);
     console.log(restoredObject.children[0].next === restoredObject.children[1]);
 }

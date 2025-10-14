@@ -1,8 +1,8 @@
-# reference-path <a href="https://github.com/memo-cn/reference-path/blob/main/README.md"><img src="https://img.shields.io/npm/v/reference-path.svg" /></a> <a href="https://github.com/memo-cn/reference-path/blob/main/README.md"><img src="https://packagephobia.now.sh/badge?p=reference-path" /></a>
+# reference-path <a href="https://www.npmjs.com/package/reference-path"><img src="https://img.shields.io/npm/v/reference-path.svg" /></a>
 
 [English](https://github.com/memo-cn/reference-path/blob/main/README.md) | [简体中文](https://github.com/memo-cn/reference-path/blob/main/README.zh-CN.md)
 
-Transform repeated references (including circular references) in JavaScript object structures into string-formatted reference paths, enabling objects to precisely retain and restore their original reference relationships after serialization and deserialization.
+Transform repeated references (including circular references) in JavaScript object structures into dot-separated path strings, ensuring objects can precisely retain and restore their original reference relationships after serialization and deserialization.
 
 ## Scenarios
 
@@ -30,10 +30,10 @@ Although `JSON.stringify(b)` can execute normally, the serialized result will lo
 
 `reference-path` provides a set of methods for replacing and restoring repeated references in JavaScript objects.
 
-| Method             | Type             | Description                                                                                   |
-| ------------------ | ---------------- | --------------------------------------------------------------------------------------------- |
-| `replaceReference` | (object: T) => T | Transforms repeated references in the object structure into string-formatted reference paths. |
-| `restoreReference` | (object: T) => T | Replaces reference paths in the object structure and restores reference relationships.        |
+| Method             | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `replaceReference` | (object: T) => T | Transforms repeated references in the object structure into dot-separated path strings. |
+| `restoreReference` | (object: T) => T | Replaces reference paths in the object structure and restores reference relationships.  |
 
 When calling `replaceReference` to transform references:
 
@@ -43,7 +43,8 @@ When calling `replaceReference` to transform references:
 
 When calling `restoreReference` to restore references:
 
-- The input data structure will be directly modified.
+- Returns the input object.
+- If the input object contains reference paths, the corresponding data structure will be directly modified to restore reference relationships; if not, it will remain unchanged.
 
 ## Examples
 

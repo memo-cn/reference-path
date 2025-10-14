@@ -4,7 +4,7 @@ import dts from 'rollup-plugin-dts';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-// import terser from '@rollup/plugin-terser';
+import terser from '@rollup/plugin-terser';
 import ts from 'rollup-plugin-typescript2';
 import { defineConfig, OutputOptions, RollupOptions } from 'rollup';
 import { createRequire } from 'module';
@@ -47,10 +47,9 @@ const plugins = {
         values: {},
         sourceMap: sourcemap,
     }),
-    terser: null,
-    // terser: terser({
-    //     sourceMap: sourcemap,
-    // }),
+    terser: terser({
+        sourceMap: sourcemap,
+    }),
     ts: (() => {
         const targets = ['es5', 'esnext'] as const;
         return Object.fromEntries(
@@ -100,9 +99,10 @@ const rollupOptions: RollupOptions[] = [
                 plugins.nodeResolve,
                 plugins.json,
                 plugins.commonjs,
-                plugins.terser,
-                format === 'es' ? plugins.ts.esnext : plugins.ts.es5,
-                format === 'es' ? null : plugins.babel,
+                // plugins.terser,
+                // format === 'es' ? plugins.ts.esnext : plugins.ts.es5,
+                plugins.ts.esnext,
+                // format === 'es' ? null : plugins.babel,
             ],
             input,
             external,

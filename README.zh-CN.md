@@ -1,8 +1,8 @@
-# 引用路径（Reference Path）<a href="https://github.com/memo-cn/reference-path/blob/main/README.zh-CN.md"><img src="https://img.shields.io/npm/v/reference-path.svg" /></a> <a href="https://github.com/memo-cn/reference-path/blob/main/README.zh-CN.md"><img src="https://packagephobia.now.sh/badge?p=reference-path" /></a>
+# 引用路径（Reference Path）<a href="https://www.npmjs.com/package/reference-path"><img src="https://img.shields.io/npm/v/reference-path.svg" /></a>
 
 [English](https://github.com/memo-cn/reference-path/blob/main/README.md) | [简体中文](https://github.com/memo-cn/reference-path/blob/main/README.zh-CN.md)
 
-将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为字符串格式的引用路径，使得对象在经过序列化和反序列化后，能够精确地保留和恢复其原始的引用关系。
+将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为以点分隔的路径字符串，确保对象经序列化与反序列化后，可精确保留并恢复原始引用关系。
 
 ## 场景
 
@@ -32,18 +32,19 @@
 
 | 方法               | 类型             | 作用                                                   |
 | ------------------ | ---------------- | ------------------------------------------------------ |
-| `replaceReference` | (object: T) => T | 将对象结构中重复出现的引用转换为字符串格式的引用路径。 |
+| `replaceReference` | (object: T) => T | 将对象结构中重复出现的引用转换为以点分隔的路径字符串。 |
 | `restoreReference` | (object: T) => T | 替换对象结构中的引用路径，恢复引用关系。               |
 
 调用 `replaceReference` 转换引用时:
 
 - 入参的数据结构不会被修改。
-- 如果输入的对象结构中不存在重复引用，则直接返回入参本身。
-- 如果入参的某部分不包含重复引用，返回的数据结构会直接引用入参中对应的部分，而不是其副本。
+- 若输入的对象结构中不存在重复引用，则直接返回入参本身。
+- 若入参的某部分不包含重复引用，返回的数据结构会直接引用入参中对应的部分，而不是其副本。
 
 调用 `restoreReference` 恢复引用时:
 
-- 入参的数据结构会被直接修改。
+- 返回输入的对象。
+- 若入参对象中包含引用路径，对应的数据结构会被直接修改以恢复引用关系；若不包含，则保持原样。
 
 ## 示例
 
@@ -83,10 +84,10 @@ console.log(json);
     "children": [
         {
             "name": "head",
-            "parent": "$ref:",
+            "parent": "$ref",
             "next": {
                 "name": "body",
-                "parent": "$ref:",
+                "parent": "$ref",
                 "prev": "$ref:children.0"
             }
         },

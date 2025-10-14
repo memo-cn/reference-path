@@ -1,8 +1,8 @@
 {
     "name": "reference-path",
     "private": false,
-    "version": "1.0.0",
-    "description": "Transform repeated references (including circular references) in JavaScript object structures into string-formatted reference paths, enabling objects to precisely retain and restore their original reference relationships after serialization and deserialization. 将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为字符串格式的引用路径，使得对象在经过序列化和反序列化后，能够精确地保留和恢复其原始的引用关系。",
+    "version": "1.0.1",
+    "description": "Transform repeated references (including circular references) in JavaScript object structures into dot-separated path strings. 将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为以点分隔的路径字符串。",
     "keywords": [
         "json",
         "object",
@@ -30,24 +30,24 @@
         "format": "prettier --write ."
     },
     "devDependencies": {
-        "@babel/core": "^7.26.10",
-        "@babel/preset-env": "^7.26.9",
-        "@rollup/plugin-babel": "^6.0.4",
-        "@rollup/plugin-commonjs": "^28.0.3",
+        "@babel/core": "^7.28.4",
+        "@babel/preset-env": "^7.28.3",
+        "@rollup/plugin-babel": "^6.1.0",
+        "@rollup/plugin-commonjs": "^28.0.7",
         "@rollup/plugin-json": "^6.1.0",
-        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-node-resolve": "^16.0.3",
         "@rollup/plugin-replace": "^6.0.2",
         "@rollup/plugin-terser": "^0.4.4",
-        "@types/node": "^22.13.11",
-        "prettier": "^3.5.3",
+        "@types/node": "^24.7.2",
+        "prettier": "^3.6.2",
         "rimraf": "^6.0.1",
-        "rollup": "^4.36.0",
-        "rollup-plugin-dts": "^6.2.1",
+        "rollup": "^4.52.4",
+        "rollup-plugin-dts": "^6.2.3",
         "rollup-plugin-typescript2": "^0.36.0",
         "tslib": "^2.8.1",
-        "typescript": "^5.8.2",
-        "vite": "^6.2.2",
-        "vite-plugin-dts": "^4.5.3"
+        "typescript": "^5.9.3",
+        "vite": "^7.1.10",
+        "vite-plugin-dts": "^4.5.4"
     },
     "files": [
         "dist",
@@ -73,8 +73,7 @@
         "url": "https://github.com/memo-cn/reference-path/issues"
     },
     "publishConfig": {
-        "access": "public",
-        "registry": "https://registry.npmjs.org"
+        "access": "public"
     },
     "license": "MIT"
 }
