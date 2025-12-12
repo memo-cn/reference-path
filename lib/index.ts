@@ -13,7 +13,7 @@ function escape(str: string) {
 
 // Create an encoder for encoding and decoding reference paths
 // 创建一个用于编码和解码引用路径的编码器
-const referencePathEncoder = createPrefixEncoder<string[]>({
+export const referencePathEncoder = createPrefixEncoder<string[]>({
     prefix: '$ref',
     escapeCharacter: '_',
     stringify: (paths) => {

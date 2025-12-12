@@ -1,7 +1,7 @@
 {
     "name": "reference-path",
     "private": false,
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Transform repeated references (including circular references) in JavaScript object structures into dot-separated path strings. 将 JavaScript 对象结构中重复出现的引用（包括循环引用）转换为以点分隔的路径字符串。",
     "keywords": [
         "json",
@@ -30,23 +30,23 @@
         "format": "prettier --write ."
     },
     "devDependencies": {
-        "@babel/core": "^7.28.4",
-        "@babel/preset-env": "^7.28.3",
+        "@babel/core": "^7.28.5",
+        "@babel/preset-env": "^7.28.5",
         "@rollup/plugin-babel": "^6.1.0",
-        "@rollup/plugin-commonjs": "^28.0.7",
+        "@rollup/plugin-commonjs": "^29.0.0",
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-node-resolve": "^16.0.3",
-        "@rollup/plugin-replace": "^6.0.2",
+        "@rollup/plugin-replace": "^6.0.3",
         "@rollup/plugin-terser": "^0.4.4",
-        "@types/node": "^24.7.2",
-        "prettier": "^3.6.2",
-        "rimraf": "^6.0.1",
-        "rollup": "^4.52.4",
-        "rollup-plugin-dts": "^6.2.3",
+        "@types/node": "^25.0.1",
+        "prettier": "^3.7.4",
+        "rimraf": "^6.1.2",
+        "rollup": "^4.53.3",
+        "rollup-plugin-dts": "^6.3.0",
         "rollup-plugin-typescript2": "^0.36.0",
         "tslib": "^2.8.1",
         "typescript": "^5.9.3",
-        "vite": "^7.1.10",
+        "vite": "^7.2.7",
         "vite-plugin-dts": "^4.5.4"
     },
     "files": [
@@ -58,7 +58,7 @@
         "README.zh-CN.md"
     ],
     "dependencies": {
-        "prefix-encoder": "^1.0.1"
+        "prefix-encoder": "^1.0.2"
     },
     "author": {
         "name": "memo",
